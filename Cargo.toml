@@ -13,4 +13,4 @@ license = "MIT"
 
 [dependencies]
 libc = "0.2.10"
-ruby-sys = { git = "https://github.com/malept/ruby-sys" }
+ruby-sys = { git = "https://github.com/steveklabnik/ruby-sys" }
