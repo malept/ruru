@@ -1,11 +1,18 @@
 # Based on https://github.com/malept/rusty_blank/blob/master/.travis.yml
 
+os:
+- linux
+- osx
+sudo: false
+dist: trusty
+osx_image: xcode8.2
+
 language: rust
 
 rust:
   - stable
-  - beta
-  - nightly
+  # - beta
+  # - nightly
 
 cache: cargo
 
@@ -18,7 +25,7 @@ before_install:
   rvm install "$BUILD_RUBY_VERSION"
   rvm use "$BUILD_RUBY_VERSION"
   ruby --version
-  ruby -e 'require "pp"; pp RbConfig::CONFIG'
+  ruby -r pp -e 'pp RbConfig::CONFIG'
 
 before_script:
 - |
@@ -34,6 +41,7 @@ env:
   global:
     - TRAVIS_CARGO_NIGHTLY_FEATURE=""
   matrix:
-    - BUILD_RUBY_VERSION: 2.3.0
-    - BUILD_RUBY_VERSION: 2.3.1
-    - BUILD_RUBY_VERSION: 2.4.0
+    - BUILD_RUBY_VERSION: 2.3.4
+      RUBY_STATIC: 1
+    - BUILD_RUBY_VERSION: 2.4.1
+      RUBY_STATIC: 1
